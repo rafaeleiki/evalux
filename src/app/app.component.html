@@ -1,8 +1,9 @@
 <div class="header">Eval<span class="ux">ux</span></div>
 <nav class="menu {{ open ? 'open' : '' }}" (click)="toggleMenu()">
   <ul>
-    <li>AttrakDiff</li>
+    <li><a [routerLink]="'/attrakdiff'">AttrakDiff</a></li>
     <li>AttrakDiff</li>
     <li>AttrakDiff</li>
   </ul>
 </nav>
+<router-outlet></router-outlet>

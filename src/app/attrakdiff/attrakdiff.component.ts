@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ATTRAKDIFF_CRITERIA, Criteria} from './attrakdiff.data';
 
 @Component({
   selector: 'app-attrakdiff',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./attrakdiff.component.css']
 })
 export class AttrakdiffComponent implements OnInit {
+
+  criteria: Criteria[] = ATTRAKDIFF_CRITERIA;
 
   constructor() { }
 
