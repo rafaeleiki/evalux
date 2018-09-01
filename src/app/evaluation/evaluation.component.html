@@ -1,0 +1,5 @@
+<div *ngIf="evaluation" class="form-container">
+  <div [ngSwitch]="evaluation.type">
+    <app-attrakdiff *ngSwitchCase="'attrakdiff'"></app-attrakdiff>
+  </div>
+</div>

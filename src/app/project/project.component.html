@@ -1,6 +1,18 @@
-<div *ngIf="project" class="container">
+<div *ngIf="project" class="form-container">
   <label>Nome do projeto</label>
   <input type="text" [(ngModel)]="project.name" />
 
   <button (click)="save()" class="button">Salvar</button>
+  <button (click)="newExperiment()" class="button">Adicionar experimento</button>
+
+  <hr />
+
+  <table>
+    <tr *ngFor="let experiment of project.experiments">
+      <td>{{ experiment.name }} - {{ experiment.date | date: 'dd/MM/yyyy' }}</td>
+      <td>
+        <a [routerLink]="['/project', project.id, 'experiment', experiment.id]" class="button">Ver</a>
+      </td>
+    </tr>
+  </table>
 </div>

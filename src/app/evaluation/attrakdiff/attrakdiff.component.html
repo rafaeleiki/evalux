@@ -1,7 +1,7 @@
 <h2 class="title">AttrakDiff</h2>
 
 <ul class="criteria-list">
-  <li *ngFor="let wordPair of criteria; let i = index;" class="word-pair">
+  <li *ngFor="let wordPair of data.wordPairs; let i = index;" class="word-pair">
     <label class="word">{{ i + 1}}. {{ wordPair.word1 }}</label>
     <input type="radio"
            class="word-pair-value"
@@ -14,4 +14,4 @@
   </li>
 </ul>
 
-<button type="button" class="save">Salvar</button>
+<button type="button" class="save" (click)="save()">Salvar</button>

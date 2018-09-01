@@ -29,8 +29,10 @@ export class ProjectService {
     const project: Project = {
       id: this.idGenerator,
       name: '',
-      experiments: []
+      experiments: [],
+      experimentIdGenerator: 1,
     };
+
     this.idGenerator++;
     this.projects.push(project);
     return project;

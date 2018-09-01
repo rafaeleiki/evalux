@@ -15,7 +15,7 @@
 
 .word-pair {
   list-style: none;
-  font-size: 1.2em;
+  font-size: 0.9em;
   padding: 0.5em;
   display: block;
 }
@@ -27,6 +27,8 @@
 .word {
   width: 200px;
   display: inline-block;
+  margin: 0;
+  vertical-align: bottom;
 }
 
 .word-pair-value {

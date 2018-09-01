@@ -3,18 +3,21 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { AttrakdiffComponent } from './attrakdiff/attrakdiff.component';
 import { AppRoutingModule } from './/app-routing.module';
 import {FormsModule} from '@angular/forms';
 import { ProjectComponent } from './project/project.component';
-import {ProjectService} from './project/project.service';
+import { ExperimentComponent } from './experiment/experiment.component';
+import {AttrakdiffComponent} from './evaluation/attrakdiff/attrakdiff.component';
+import { EvaluationComponent } from './evaluation/evaluation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AttrakdiffComponent,
-    ProjectComponent
+    ProjectComponent,
+    ExperimentComponent,
+    EvaluationComponent,
   ],
   imports: [
     BrowserModule,

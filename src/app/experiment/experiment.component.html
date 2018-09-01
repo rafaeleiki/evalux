@@ -1,0 +1,28 @@
+<div *ngIf="experiment" class="form-container">
+  <label>Nome</label>
+  <input type="text" [(ngModel)]="experiment.name" />
+
+  <label>Data</label>
+  <input type="date" [(ngModel)]="experiment.date" />
+
+  <label>Duração (minutos)</label>
+  <input type="number" [(ngModel)]="experiment.durationInMinutes" />
+
+  <label>Participantes</label>
+  <input type="number" [(ngModel)]="experiment.participants" />
+
+  <label>Observadores</label>
+  <input type="number" [(ngModel)]="experiment.observers" />
+
+  <button (click)="save()" class="button">Salvar</button>
+  <button (click)="newEvaluation()" class="button">Adicionar avaliação</button>
+</div>
+
+<hr />
+<h3>Avaliações</h3>
+<ul>
+  <li *ngFor="let evaluation of experiment.evaluations">
+    Tipo: {{ evaluation.type }}
+    <a [routerLink]="['./evaluation', evaluation.id]" class="button">Ver</a>
+  </li>
+</ul>

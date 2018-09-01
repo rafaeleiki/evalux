@@ -58,10 +58,27 @@ table {
   color: #fff;
   border: none;
   padding: 1em 2em;
-  display: block;
+  display: inline-block;
   margin: 0.5em;
   font-weight: bold;
   font-family: sans-serif;
   cursor: pointer;
   border-radius: 0.25em;
+}
+
+.form-container {
+  padding: 1em;
+}
+
+.form-container label {
+  font-size: 1.5em;
+  font-family: sans-serif;
+  display: block;
+  margin: 1em 0 0.25em;
+}
+
+.form-container input {
+  padding: 0.5em;
+  border-radius: 0.25em;
+  border: 1px solid #666;
 }
