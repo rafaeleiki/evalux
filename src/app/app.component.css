@@ -1,12 +1,16 @@
 .header {
   background-color: #4B946A;
-  color: #fff;
   height: 80px;
   text-align: center;
+}
+
+.header a {
   font-size: 4em;
   font-family: sans-serif;
   font-weight: bold;
   line-height: 80px;
+  color: #fff;
+  text-decoration: none;
 }
 
 .ux {

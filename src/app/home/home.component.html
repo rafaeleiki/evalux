@@ -1,3 +1,7 @@
-<p>
-  home works!
-</p>
+<ul>
+  <li *ngFor="let project of projects;" class="project">
+    Projeto: {{ project.name }}
+    <a [routerLink]="['/project/', project.id]" class="button">Ver</a>
+  </li>
+</ul>
+<button (click)="newProject()" class="project-button button">Novo projeto</button>

@@ -1,0 +1,6 @@
+<div *ngIf="project" class="container">
+  <label>Nome do projeto</label>
+  <input type="text" [(ngModel)]="project.name" />
+
+  <button (click)="save()" class="button">Salvar</button>
+</div>

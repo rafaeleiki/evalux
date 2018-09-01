@@ -6,12 +6,15 @@ import { HomeComponent } from './home/home.component';
 import { AttrakdiffComponent } from './attrakdiff/attrakdiff.component';
 import { AppRoutingModule } from './/app-routing.module';
 import {FormsModule} from '@angular/forms';
+import { ProjectComponent } from './project/project.component';
+import {ProjectService} from './project/project.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AttrakdiffComponent
+    AttrakdiffComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
