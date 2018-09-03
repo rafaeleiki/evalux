@@ -17,6 +17,7 @@ export class ExperimentComponent implements OnInit, AfterViewInit {
   projectId: number;
   experiment: Experiment;
   attrakdiff: Chart;
+  attrakdiffPoints: number;
 
   constructor(private projectService: ProjectService,
               private experimentService: ExperimentService,
@@ -47,6 +48,7 @@ export class ExperimentComponent implements OnInit, AfterViewInit {
 
       const { wordPairs } = <AttrakdiffData> attrakdiffEvaluations[0].data;
       const labels = wordPairs.map((wordPair: Criteria) => `${wordPair.positiveWord} - ${wordPair.negativeWord}`);
+
       const data = wordPairs.map((pair, index) => {
 
         const averagePairValue = attrakdiffEvaluations.reduce((value, evaluation) => {
@@ -62,6 +64,7 @@ export class ExperimentComponent implements OnInit, AfterViewInit {
 
         return averagePairValue / attrakdiffEvaluations.length;
       });
+      this.attrakdiffPoints = data.reduce((sum, val) => sum + val, 0);
 
       const backgroundColor = data.map((value) => {
         let color;
