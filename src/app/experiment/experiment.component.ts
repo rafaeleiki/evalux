@@ -46,14 +46,21 @@ export class ExperimentComponent implements OnInit, AfterViewInit {
     if (attrakdiffEvaluations.length > 0) {
 
       const { wordPairs } = <AttrakdiffData> attrakdiffEvaluations[0].data;
-      const labels = wordPairs.map((wordPair: Criteria) => `${wordPair.word1} - ${wordPair.word2}`);
+      const labels = wordPairs.map((wordPair: Criteria) => `${wordPair.positiveWord} - ${wordPair.negativeWord}`);
       const data = wordPairs.map((pair, index) => {
 
-        const pairValue = attrakdiffEvaluations.reduce((value, evaluation) => {
-            return value + (+(<AttrakdiffData>evaluation.data).wordPairs[index].value);
+        const averagePairValue = attrakdiffEvaluations.reduce((value, evaluation) => {
+            const wordPair = (<AttrakdiffData>evaluation.data).wordPairs[index];
+            let pairValue = wordPair.value;
+
+            if (wordPair.first === '+') {
+              pairValue = -pairValue;
+            }
+
+            return value + pairValue;
           }, 0);
 
-        return pairValue / attrakdiffEvaluations.length;
+        return averagePairValue / attrakdiffEvaluations.length;
       });
 
 

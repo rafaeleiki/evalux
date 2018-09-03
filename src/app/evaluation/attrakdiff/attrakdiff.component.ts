@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AttrakdiffData, getAttrakdiffData} from './attrakdiff.data';
+import {AttrakdiffData, Criteria, getAttrakdiffData} from './attrakdiff.data';
 import {EvaluationService} from '../evaluation.service';
 import {ProjectService} from '../../project/project.service';
 import {ActivatedRoute} from '@angular/router';
@@ -19,6 +19,7 @@ export class AttrakdiffComponent implements OnInit {
               private projectService: ProjectService,
               private route: ActivatedRoute) { }
 
+
   ngOnInit() {
     const { paramMap } = this.route.snapshot;
     const projectId = +paramMap.get('projectId');
@@ -32,6 +33,18 @@ export class AttrakdiffComponent implements OnInit {
       this.data = getAttrakdiffData();
     }
   }
+
+
+  words(pair: Criteria): string[] {
+    let result;
+    if (pair.first === '+') {
+      result = [pair.positiveWord, pair.negativeWord];
+    } else {
+      result = [pair.negativeWord, pair.positiveWord];
+    }
+    return result;
+  }
+
 
   save() {
     this.evaluation.data = this.data;

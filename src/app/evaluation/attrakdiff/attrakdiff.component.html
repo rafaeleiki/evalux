@@ -1,16 +1,16 @@
 <h2 class="title">AttrakDiff</h2>
 
 <ul class="criteria-list">
-  <li *ngFor="let wordPair of data.wordPairs; let i = index;" class="word-pair">
-    <label class="word">{{ i + 1}}. {{ wordPair.word1 }}</label>
+  <li *ngFor="let pair of data.wordPairs; let i = index;" class="word-pair">
+    <label class="word">{{ i + 1}}. {{ words(pair)[0] }}</label>
     <input type="radio"
            class="word-pair-value"
-           name="criteria-{{ wordPair.word1 }}"
+           name="criteria-{{ pair.positiveWord }}"
            *ngFor="let val of [-3,-2,-1, 0, 1, 2, 3]"
            value="{{ val }}"
            required
-           [(ngModel)]="wordPair.value">
-    <label class="word">{{ i + 1}}. {{ wordPair.word2 }}</label>
+           [(ngModel)]="pair.value">
+    <label class="word">{{ i + 1}}. {{ words(pair)[1] }}</label>
   </li>
 </ul>
 
