@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {ProjectService} from '../project/project.service';
-import {Evaluation, Experiment} from '../project/project';
+import {Experiment} from '../project/project';
 
 @Injectable({
   providedIn: 'root'
