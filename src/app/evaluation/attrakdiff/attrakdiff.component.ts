@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AttrakdiffData, Criteria, getAttrakdiffData} from './attrakdiff.data';
 import {EvaluationService} from '../evaluation.service';
 import {ProjectService} from '../../project/project.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Evaluation} from '../../project/project';
 
 @Component({
@@ -12,20 +12,24 @@ import {Evaluation} from '../../project/project';
 })
 export class AttrakdiffComponent implements OnInit {
 
+  projectId: number;
+  experimentId: number;
   evaluation: Evaluation;
   data: AttrakdiffData;
 
   constructor(private evaluationService: EvaluationService,
               private projectService: ProjectService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
 
   ngOnInit() {
     const { paramMap } = this.route.snapshot;
-    const projectId = +paramMap.get('projectId');
-    const experimentId = +paramMap.get('experimentId');
+    this.projectId = +paramMap.get('projectId');
+    this.experimentId = +paramMap.get('experimentId');
     const evaluationId = +paramMap.get('evaluationId');
-    this.evaluation = this.evaluationService.getEvaltuation(projectId, experimentId, evaluationId);
+    this.evaluation = this.evaluationService
+      .getEvaltuation(this.projectId, this.experimentId, evaluationId);
 
     if (this.evaluation.data) {
       this.data = <AttrakdiffData> this.evaluation.data;
@@ -49,5 +53,6 @@ export class AttrakdiffComponent implements OnInit {
   save() {
     this.evaluation.data = this.data;
     this.projectService.saveProjects();
+    this.router.navigate(['/project', this.projectId, 'experiment', this.experimentId]);
   }
 }
