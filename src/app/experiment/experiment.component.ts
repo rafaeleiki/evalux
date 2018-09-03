@@ -51,7 +51,7 @@ export class ExperimentComponent implements OnInit, AfterViewInit {
 
         const averagePairValue = attrakdiffEvaluations.reduce((value, evaluation) => {
             const wordPair = (<AttrakdiffData>evaluation.data).wordPairs[index];
-            let pairValue = wordPair.value;
+            let pairValue = +wordPair.value;
 
             if (wordPair.first === '+') {
               pairValue = -pairValue;
@@ -62,7 +62,6 @@ export class ExperimentComponent implements OnInit, AfterViewInit {
 
         return averagePairValue / attrakdiffEvaluations.length;
       });
-
 
       const backgroundColor = data.map((value) => {
         let color;
