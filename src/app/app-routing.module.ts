@@ -9,7 +9,6 @@ import {EvaluationComponent} from './evaluation/evaluation.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'attrakdiff', component: AttrakdiffComponent },
   { path: 'project/:projectId', component: ProjectComponent, },
   { path: 'project/:projectId/experiment/:experimentId', component: ExperimentComponent },
   {

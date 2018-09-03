@@ -55,12 +55,16 @@
   margin-top: 2.5em;
 }
 
-.menu li {
-  padding: 0.75em 20px;
-}
-
 .menu li:hover {
   background-color: #ddd;
+}
+
+.menu li a {
+  padding: 0.75em 20px;
+  color: #000;
+  text-decoration: none;
+  font-family: sans-serif;
+  display: block;
 }
 
 .menu.open ul {
