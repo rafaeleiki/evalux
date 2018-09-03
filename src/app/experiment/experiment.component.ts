@@ -59,12 +59,26 @@ export class ExperimentComponent implements OnInit, AfterViewInit {
 
       const backgroundColor = data.map((value) => {
         let color;
-        if (Math.abs(value) <= 1.5) {
-          color = 'yellow';
-        } else if (value > 1.5) {
-          color = 'green';
+
+        // Neutral color
+        if (Math.abs(value) <= 1) {
+          color = '#b5aa27';
+        } else if (value > 0) {
+
+          // Positive colors
+          if (value > 2) {
+            color = '#0aa91e';
+          } else {
+            color = '#7fa87b';
+          }
         } else {
-          color = 'red';
+
+          // Negative colors
+          if (value < -2) {
+            color = 'red';
+          } else {
+            color = '#c57a7e';
+          }
         }
         return color;
       });
@@ -76,9 +90,6 @@ export class ExperimentComponent implements OnInit, AfterViewInit {
           datasets: [{
             data,
             backgroundColor,
-            fill: false,
-            borderColor: '#000',
-            lineTension: 0,
           }],
         },
         options: {
@@ -106,7 +117,7 @@ export class ExperimentComponent implements OnInit, AfterViewInit {
                 maxTicksLimit: 100,
                 min: -3,
                 max: 3,
-                stepSize: 0.25,
+                stepSize: 0.5,
               },
             }],
           }
@@ -127,5 +138,13 @@ export class ExperimentComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/project', this.projectId,
                           'experiment', this.experiment.id,
                           'evaluation', evaluation.id]);
+  }
+
+
+  deleteEvaluation(id: number) {
+    if (confirm('Você tem certeza? Esta ação é irreversível')) {
+      this.evaluationService.deleteEvaluation(this.projectId, this.experiment.id, id);
+      this.projectService.saveProjects();
+    }
   }
 }

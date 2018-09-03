@@ -23,6 +23,7 @@
     <li *ngFor="let evaluation of experiment.evaluations">
       Tipo: {{ evaluation.type }}
       <a [routerLink]="['./evaluation', evaluation.id]" class="button">Ver</a>
+      <button class="button" (click)="deleteEvaluation(evaluation.id)">Excluir</button>
     </li>
   </ul>
 

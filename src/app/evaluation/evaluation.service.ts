@@ -20,6 +20,7 @@ export class EvaluationService {
     return evaluation;
   }
 
+
   getEvaltuation(projectId: number, experimentId: number, evaluationId: number): Evaluation {
     const experiment = this.experiments.getExperiment(projectId, experimentId);
     let result: Evaluation;
@@ -33,5 +34,23 @@ export class EvaluationService {
     });
 
     return result;
+  }
+
+
+  deleteEvaluation(projectId: number, experimentId: number, evaluationId: number) {
+    const experiment = this.experiments.getExperiment(projectId, experimentId);
+    let deleteIndex = -1;
+
+    experiment.evaluations.some((evaluation, index) => {
+      const found = evaluation.id === evaluationId;
+      if (found) {
+        deleteIndex = index;
+      }
+      return found;
+    });
+
+    if (deleteIndex >= 0) {
+      experiment.evaluations.splice(deleteIndex, 1);
+    }
   }
 }
