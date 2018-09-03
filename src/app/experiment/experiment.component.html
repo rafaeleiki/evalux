@@ -28,11 +28,7 @@
   </ul>
 
   <hr />
-  <h3>Resultados</h3>
-  <h4>Pontos: {{ attrakdiffPoints }}/60</h4>
-  <div [hidden]="!attrakdiff">
-    <canvas id="attrakdiff">{{ attrakdiff }}</canvas>
-  </div>
+  <app-attrakdiff-chart [evaluations]="attrakdiffEvaluations"></app-attrakdiff-chart>
 </div>
 
 

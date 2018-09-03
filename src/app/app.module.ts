@@ -9,6 +9,7 @@ import { ProjectComponent } from './project/project.component';
 import { ExperimentComponent } from './experiment/experiment.component';
 import {AttrakdiffComponent} from './evaluation/attrakdiff/attrakdiff.component';
 import { EvaluationComponent } from './evaluation/evaluation.component';
+import {AttrakdiffChartComponent} from './evaluation/attrakdiff/attrakdiff-chart/attrakdiff-chart.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { EvaluationComponent } from './evaluation/evaluation.component';
     ProjectComponent,
     ExperimentComponent,
     EvaluationComponent,
+    AttrakdiffChartComponent,
   ],
   imports: [
     BrowserModule,

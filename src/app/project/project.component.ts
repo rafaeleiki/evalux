@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Project} from './project';
+import {Evaluation, Project} from './project';
 import {ProjectService} from './project.service';
 import {switchMap} from 'rxjs/internal/operators';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
@@ -14,6 +14,7 @@ import {ExperimentService} from '../experiment/experiment.service';
 export class ProjectComponent implements OnInit {
 
   project: Project;
+  attrakdiffEvaluations: Evaluation[];
 
   constructor(private projectService: ProjectService,
               private experimentService: ExperimentService,
@@ -23,7 +24,16 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
     const id: number = +this.route.snapshot.paramMap.get('projectId');
     this.project = this.projectService.getProject(id);
+    this.loadAttrakDiff();
   }
+
+
+  loadAttrakDiff() {
+    const evaluationMatrix = this.project.experiments.map((experiment) => experiment.evaluations);
+    const evaluationList = evaluationMatrix.reduce((array, evaluations) => array.concat(evaluations), []);
+    this.attrakdiffEvaluations = evaluationList.filter((evaluation) => evaluation.type === 'attrakdiff');
+  }
+
 
   save() {
     this.projectService.saveProjects();
